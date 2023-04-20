@@ -154,5 +154,6 @@ async function updateGame(
     }
   } catch (error) {
     console.log(error);
+    displayMessage("error", error, ".message-container");
   }
 }
