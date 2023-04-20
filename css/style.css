@@ -3,7 +3,7 @@
 }
 
 :root {
-    --primary-colour: darkGreen;
+    --primary-colour: slateblue;
 }
 
 body {
@@ -30,9 +30,17 @@ form > div {
     margin-bottom: 1rem;
 }
 
-form input {
+form input,
+textarea {
     width: 100%;
     padding: 0.4rem;
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+textarea {
+    height: 200px;
+    resize: none;
 }
 
 button {
@@ -48,6 +56,7 @@ button {
     text-decoration: none;
     color: #333;
     padding-right: 1rem;
+    font-weight: 600;
 }
 
 .menu a.active {
@@ -62,15 +71,38 @@ button {
 .game-container {
     display: flex;
     flex-wrap: wrap;
+    gap: 2rem;
 }
 
 .game {
-    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
     margin-left: 0;
-    padding: 1rem;
-    border-radius: 1rem;
-    width: 250px;
+    border-radius: 1.3rem;
+    width: 275px;
+    height: 250px;
     background-size: cover;
+    background-position: center;
+}
+
+.game-details {
+    color: white;
+    background-image: linear-gradient(to top, #1e1e1e 85%, transparent);
+    border-radius: 0 0 1rem 1rem;
+    padding-left: 1rem;
+}
+
+.game-details h4 {
+    margin-bottom: 0;
+}
+
+.game-details p {
+    margin-top: 0;
+}
+
+.details img {
+    width: 100%;
 }
 
 .message {
@@ -96,4 +128,12 @@ button {
     border-color: green;
     color: white;
     background: green;
+}
+
+.edit-form {
+    display: none;
+}
+
+.delete {
+    background: darkred;
 }

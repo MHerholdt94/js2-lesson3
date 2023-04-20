@@ -1,11 +1,14 @@
 import displayMessage from "./components/common/displayMessage.js";
-import { baseUrl } from "./settings/api.js";
 import { saveToken, saveUser } from "./utils/storage.js";
+import { baseUrl } from "./settings/api.js";
+import createMenu from "./components/common/createMenu.js";
 
 const form = document.querySelector("form");
 const username = document.querySelector("#username");
 const password = document.querySelector("#password");
 const message = document.querySelector(".message-container");
+
+createMenu();
 
 form.addEventListener("submit", submitForm);
 
@@ -25,7 +28,7 @@ function submitForm(event) {
 }
 
 async function doLogin(username, password) {
-  const url = baseUrl + "auth/local";
+  const url = baseUrl + "/api/auth/local";
 
   const data = JSON.stringify({
     identifier: username,
@@ -47,10 +50,12 @@ async function doLogin(username, password) {
     console.log(json);
 
     if (json.user) {
-      //   displayMessage("success", "Successfully logged in", ".message-container");
+      displayMessage("success", "Successfully logged in", ".message-container");
 
       saveToken(json.jwt);
       saveUser(json.user);
+
+      console.log(json.jwt);
 
       location.href = "/";
     }

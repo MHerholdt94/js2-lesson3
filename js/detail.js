@@ -1,5 +1,8 @@
 import { baseUrl } from "./settings/api.js";
 import displayMessage from "./components/common/displayMessage.js";
+import createMenu from "./components/common/createMenu.js";
+
+createMenu();
 
 const queryString = document.location.search;
 
@@ -11,7 +14,7 @@ if (!id) {
   document.location.href = "/";
 }
 
-const gameUrl = baseUrl + "/api/games/" + id;
+const gameUrl = baseUrl + "/api/games/" + id + "?populate=*";
 
 (async function () {
   try {
@@ -22,8 +25,6 @@ const gameUrl = baseUrl + "/api/games/" + id;
     const game = details.data.attributes;
 
     document.title = game.title;
-
-    console.log(game);
 
     container.innerHTML = `<h1>${game.title}</h1>
                           <p>${game.price}kr</p>
